@@ -1,7 +1,12 @@
 <?php
 /**
  * Loader file
- * $Id$ or $Revision$
+ *
+ * $LastChangedDate$
+ * $LastChangedRevision$
+ * $LastChangedBy$
+ * 
+ * $Revision$
  * 
  */
 include_once 'ivy/core/controller/ivy.php';
