@@ -9,15 +9,21 @@
  * The methods here are usually used as a way low resource hungry way of 
  * doing things, and can be called by other classes that directly do what
  * some of these methods do (like fileExt)
+ *
+ * $Date$
+ * $Author$
  * 
- * @author James Randell <james.randell@ivyframework.com>
- * @version 4.0.1
- * @package	Core
+ * $Revision$
  * 
- * @todo come up with a list of methods
+ * @package Controller
+ * @version 4.0
  */
 
-
+/**
+ * When classes are called autoload the files they're held in
+ * 
+ * @param string $class_name Name of the classes
+ */
 function __autoload($class_name) {
 	
 	$parts = explode('/', $_SERVER['SCRIPT_NAME']);
@@ -40,6 +46,8 @@ function __autoload($class_name) {
 
 
 /**
+ * Main Ivy class, first to be called from the application file
+ * 
  * First class to be instatiated. Deals with configuration and setting up the system 
  * for first time use. Loads site configuration, site extensions and adds data to 
  * the registry.
@@ -63,7 +71,17 @@ protected $controller = 'index';
 protected $action = 'index';
 
 
-function __construct ()
+/**
+ * Sets up the URI components for the framework
+ * 
+ * Stores default query parts, and breaks up the PATH_INFO information
+ * in the $_SERVER array to figure out what controller and action the 
+ * borwser wants.
+ * 
+ * @access public
+ * @return void
+ */
+public function __construct ()
 {
 	/*
 	 * stores the seperate query parts
@@ -170,7 +188,7 @@ public function loader ()
 	
 	(array) $array = array ();
 	
-	//require_once $this->path . '/core/controller/ivy_controller.php';
+	
 	require_once $this->path . '/application/' . $this->application . '/controller/' . $this->controller . '.php';
 	
 	/**
@@ -199,10 +217,5 @@ public function loader ()
 	$controller->{$this->action}();
 }
 
-
-
 }
-
-
-
 ?>
