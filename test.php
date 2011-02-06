@@ -2,9 +2,8 @@
 /**
  * Loader file
  *
- * $LastChangedDate$
- * $LastChangedRevision$
- * $LastChangedBy$
+ * $Date$
+ * $author: james.randell.user@googlemail.com $
  * 
  * $Revision$
  * 
