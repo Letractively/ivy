@@ -7,11 +7,21 @@
  * create and drop datasource components (tables, fields, files, directories
  * via the lower level connecter APIs). 
  * 
- * @author	James Randell <james.randell@ivyframework.com>
- * @version	4.0.1
- * @package	Core
+ * $Date$
+ * $Author$
  * 
- * @todo	need to list a lot of the methods this class will have
+ * $Revision$
+ * 
+ * @package Controller
+ * @version 4.0
+ */
+
+/**
+ * Universal datasource API
+ * 
+ * Allows you to connect to anything we have a connector for
+ * 
+ * @todo need to list a lot of the methods this class will have
  */
 class ivy_datasource {
 
