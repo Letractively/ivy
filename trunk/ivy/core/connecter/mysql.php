@@ -7,10 +7,18 @@
  * controller, through the dictionary again before making it back to the calling
  * controller
  * 
- * @author James Randell <james.randell@ivyframework.com>
- * @version 4.0.1
- * @package	Connecter
+ * $Date$
+ * $Author$
  * 
+ * $Revision$
+ * 
+ * @package Connecter
+ * @version 4.0
+ */
+
+/**
+ * MySQL datasource connecter
+ *
  * @todo class specification, make an interface too
  */
 class mysql {
