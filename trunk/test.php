@@ -1,6 +1,8 @@
 <?php
 /**
  * Loader file
+ * $Rev$
+ * 
  */
 
 /* $URL$
