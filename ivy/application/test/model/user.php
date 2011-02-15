@@ -4,14 +4,13 @@ $array = array (
 	'field'	=> array (
 		'USERID'	=> array (
 			'front'		=> array (
-				'title'		=>	'Collar / user name',
-				'type'		=>	'text',
+				'title'		=>	'User id',
+				'type'		=>	'hidden',
 			),
 			'back'		=> array (
-				'size'		=>	55,
+				'size'		=>	10,
 				'required'	=>	'y',
-				'unique'	=>	'y',
-				'type'		=>	'var',
+				'type'		=>	'int',
 				'auto'		=>	'y',
 			)
 		),
@@ -22,6 +21,7 @@ $array = array (
 			),
 			'back'		=> array (
 				'type'		=>	'var',
+				'required'	=>	'y',
 				'size'		=>	40
 			),
 		),
@@ -32,14 +32,26 @@ $array = array (
 			),
 			'back'		=> array (
 				'type'		=>	'var',
+				'required'	=>	'y',
 				'size'		=>	40
+			),
+		),
+		'EMAIL'	=> array (
+			'front'		=> array (
+				'title'		=>	'EMail',
+				'type'		=>	'text',
+				'class'		=>	'email_check'
+			),
+			'back'		=> array (
+				'type'		=>	'var',
+				'required'	=>	'y',
+				'size'		=>	55
 			),
 		),
 	),
 	'table'	=> array (
 		'title'		=>	'USER',
-		'pk'		=>	array('USERID'),
-		'auto'		=>	0
+		'pk'		=>	array('USERID')
 	),
 	
 	'datasource'	=> array (

@@ -132,6 +132,34 @@ public function select ($where = null, $array = null)
 }
 
 /**
+ * Runs an insert statment through the connector
+ * 
+ * By default this looks at the $_POST array for it's information. Wraps up
+ * the details and sends it to the datasource connector speficified in the 
+ * model
+ * 
+ * @access public
+ * @return bool
+ * @param array $array Array of data to insert to the database
+ */
+public function insert (array $array = null)
+{
+	/*
+	 * check if were passing an array, if not then use what's in $_POST.
+	 * and if nothing is there then return false
+	 */
+	if ($array) {
+		
+	} else if ($_POST) {
+		$array = $_POST;
+	} else {
+		return false;
+	}
+	
+	$this->datasource->query['field'] = $this->_fieldExist($array);
+}
+
+/**
  * Looks at the fields we want to see if they exist in the model
  * 
  * The calling method has the option to choose what fields they want from the 
