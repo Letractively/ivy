@@ -33,6 +33,13 @@ class ivy_datasource {
  */
 private $model = array ();
 
+/**
+ * Holes data from select queries
+ * 
+ * @access public
+ * @var array
+ */
+public $data = array ();
 
 /**
  * Tells the API what model file to load
@@ -126,9 +133,22 @@ public function select ($where = null, $array = null)
 	
 	$this->datasource->query['field'] = $this->_fieldExist($array);
 	
-	echo '<pre>';
-	print_r($this->datasource->select());
-	echo '</pre>';
+	$this->data = $this->datasource->select();
+}
+
+/**
+ * Uses the connector to run queries depending on it's functionality
+ * 
+ * the __call is used to utilise all of a connectors methods. This is so we 
+ * don't have to maintain the ivy_datasource file every time a connector 
+ * introduces a new method
+ * 
+ * @access public
+ * @return object
+ */
+public function __call ($method, $parameters) 
+{
+	//$this->datasource->
 }
 
 /**
@@ -156,7 +176,19 @@ public function insert (array $array = null)
 		return false;
 	}
 	
-	$this->datasource->query['field'] = $this->_fieldExist($array);
+	/*
+	 * figure out if this is an array of rows, or just one
+	 */
+	if (isset($array[0])) {
+		foreach ($array as $key => $data) {
+			$this->datasource->query['data'][] = $this->_fieldExist($data);
+		}
+	} else {
+		$this->datasource->query['data'][0] = $this->_fieldExist($array);
+	}
+	
+
+	$this->datasource->insert();
 }
 
 /**

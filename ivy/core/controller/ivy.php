@@ -200,7 +200,7 @@ public function loader ()
 	 * is the method/action callable?
 	 */
 	if (is_callable(array($controller, $this->action)) === false) {
-		trigger_error('The mathod: "' . $this->action . '" was not found <br />');
+		trigger_error('The method: <strong>' . $this->action . '</strong> was not found ');
 		$this->action = 'index';
 	}
 		
