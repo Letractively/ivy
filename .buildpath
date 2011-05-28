@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildpath>
+	<buildpathentry kind="con" path="org.eclipse.php.core.LANGUAGE"/>
+	<buildpathentry kind="lib" path="4.0.10.zip"/>
+	<buildpathentry kind="src" path="trunk"/>
+</buildpath>

@@ -83,7 +83,16 @@ public function query ($query)
         $err = mysql_error();
         die($err);
     }
-    if (isset($result)){
+    
+    /*
+     * check for status return and not data
+     */
+    if (is_bool($result)) {
+    	return $result;
+    }
+    
+    if (isset($result)) {
+    	
     	while ($line = mysql_fetch_assoc($result)) {
 			$row[] = $line;
 		}
@@ -121,6 +130,29 @@ public function select ($where = null, $array = null)
 	
 	$query = $this->query['verb'] . ' ' . implode(', ', $this->query['field']) . ' FROM ' .
 		$this->query['table'];
+
+	return $this->query($query);
+}
+
+/**
+ * 
+ * @todo handle multiple row inserts
+ */
+public function insert ()
+{
+	$this->query['verb'] = 'INSERT ';
+	
+foreach ($this->query['data'] as $key => $value) {
+		
+	}
+	
+	$query = $this->query['verb'] . ' INTO ' . $this->query['table'] . ' SET ';
+	
+	foreach ($this->query['data'][0] as $key => $value) {
+		$query .= $key . ' = "' . $value . '", ';
+	}
+	
+	$query = rtrim($query, ', ');
 	
 	return $this->query($query);
 }
