@@ -2,21 +2,22 @@
 /**
  * Router module for Ivy framework
  *
- * Handles php file requests
- * These functions are used aroudn the framework, some examples include:
- *  - finding different file paths
- *  - testing for file types (such as a model file)
- * The methods here are usually used as a way low resource hungry way of 
- * doing things, and can be called by other classes that directly do what
- * some of these methods do (like fileExt)
+ * @file: $Id$
  *
- * $Date$
- * $Author$
- * 
- * $Revision$
- * 
+ * Project Name : Project Description
+ *
+ * @project Ivy Framework 4
  * @package Controller
- * @version 4.0
+ * @version: 4.0
+ * @subpackage Ivy
+ * @author $Author$
+ * @copyright $Copyright$
+ * @version $Revision$
+ * @lastrevision $Date$
+ * @modifiedby $LastChangedBy$
+ * @lastmodified $LastChangedDate$
+ * @license $License$
+ * @filesource $URL$
  */
 
 /**
