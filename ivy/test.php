@@ -14,9 +14,11 @@
 /**
  * Call the start ivy file, and kick the whole process off
  */
-include_once 'ivy/core/controller/ivy.php';
 
-$ivy = new ivy();
+
+include_once 'core/controller/ivy.php';
+
+$ivy = new router();
 $ivy->loader();
 
 ?>
