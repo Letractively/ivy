@@ -21,20 +21,39 @@
  */
 
 /**
+ * The full path of the orininal site location
+ */
+define('SITEPATH', dirname($_SERVER['SCRIPT_FILENAME']));
+define ('SITE', pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME));
+
+
+/**
+ * Start the timer
+ */
+define('TIMER', microtime());
+
+/**
+ * define error reporting levels
+ */
+
+define('E_USER_SLOWSCRIPT', 1048);
+
+
+/**
  * When classes are called autoload the files they're held in
  * 
  * @param string $class_name Name of the classes
  */
 function __autoload($class_name) {
-	
+
 	$parts = explode('/', $_SERVER['SCRIPT_NAME']);
 	$file = explode('.', $parts[sizeof($parts)-1]);
 
 	$directories = array (
-		'ivy/applciation/' . $file[0] . '/controller/',
-		'ivy/core/templating/',
-		'ivy/core/controller/',
-		'ivy/core/connecter/'
+		'application/' . $file[0] . '/controller/',
+		'core/templating/',
+		'core/controller/',
+		'core/connecter/'
 	);
 
 	foreach ($directories as $directory) {
@@ -45,6 +64,8 @@ function __autoload($class_name) {
 	}
 }
 
+$ivy = new router();
+
 
 /**
  * Main Ivy class, first to be called from the application file
@@ -53,6 +74,7 @@ function __autoload($class_name) {
  * for first time use. Loads site configuration, site extensions and adds data to 
  * the registry.
  */  
+
 class ivy {
 
 /**
@@ -111,8 +133,8 @@ public function __construct ()
 	/**
 	 * assign the path
 	 */
-	$this->path = dirname($_SERVER['SCRIPT_FILENAME']) . '/ivy';
-	
+	$this->path = dirname($_SERVER['SCRIPT_FILENAME']) . '';
+
 	/**
 	 * assign controller
 	 */
