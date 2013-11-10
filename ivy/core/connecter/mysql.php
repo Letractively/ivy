@@ -51,24 +51,25 @@ private $connection = array ();
  * @return void
  * @param array $datasourceDetail
  */
-public function __construct ($datasourceDetail)
+public function __construct ($schema)
 {
-	$this->connection = mysql_connect($datasourceDetail['datasource']['server'], 
-							$datasourceDetail['datasource']['username'], 
-							$datasourceDetail['datasource']['password']);
+	$this->connection = new mysqli($schema['datasource']['server']
+							,$schema['datasource']['username'] 
+							,$schema['datasource']['password']
+							,$schema['datasource']['datasource']);
 
-	$this->server = $datasourceDetail['datasource']['server'];
-	$this->query['table'] = $datasourceDetail['table']['title'];
+	if (mysqli_connect_errno()) {
+	    printf("Connect failed: %s\n", mysqli_connect_error());
+    }
+
+	$this->server = $schema['datasource']['server'];
+	$this->query['table'] = $schema['table']['title'];
+
 	/*
 	 * connection to the server failed
 	 */
 	if (!$this->connection) {
-	    die('Could not connect to "' . $this->server . '": ' . mysql_error());
-	}
-	
-	
-	if (!mysql_select_db($datasourceDetail['datasource']['datasource'])) {
-		die('No such datasource "' . $this->server . '": ' . mysql_error());
+	    die('Could not connect to "' . $this->server . '": ' . mysqli_error());
 	}
 }
 
@@ -78,10 +79,9 @@ public function query ($query)
 		echo '<p>' . $query . '</p>';
 	}
 	
-	$result = mysql_query($query) or die(mysql_error());
+	$result = $this->connection->query($query);
     if (!$result){
-        $err = mysql_error();
-        die($err);
+    
     }
     
     /*
@@ -93,11 +93,12 @@ public function query ($query)
     
     if (isset($result)) {
     	
-    	while ($line = mysql_fetch_assoc($result)) {
-			$row[] = $line;
-		}
+    	$row = $result->fetch_row();
+    	//while ($line = mysql_fetch_assoc($result)) {
+		//	$row[] = $line;
+		//}
 			
-		mysql_free_result($result);
+		//mysql_free_result($result);
 
 		if (isset($row)) {
 			$result = $row;
