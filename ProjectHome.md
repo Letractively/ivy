@@ -1,0 +1,1 @@
+The Ivy framework is a PHP based Rapid Application Tool currently in development. With a strong background in Corporate Intranet environments Ivy framework can integrate with a variety of datasource, authenticate your users and create applications very quickly, very easily.
